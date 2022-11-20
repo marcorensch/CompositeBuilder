@@ -1,32 +1,25 @@
 // noinspection GroovyAssignabilityCheck
+// scripted pipeline syntax
 node {
    def mvnHome
    stage('Preparation') {
-      steps {
-         // Get some code from a GitHub repository
-         checkout scm
-         // ** NOTE: This 'Maven 3' Maven tool must be configured in the global configuration.
-         mvnHome = tool 'Maven 3'
-      }
+      // Get some code from a GitHub repository
+      checkout scm
+      // ** NOTE: This 'Maven 3' Maven tool must be configured in the global configuration.
+      mvnHome = tool 'Maven 3'
    }
    stage('Build') {
-      steps{
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean org.jacoco:jacoco-maven-plugin:prepare-agent package"
-      }
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean org.jacoco:jacoco-maven-plugin:prepare-agent package"
    }
    stage('Results') {
-      steps{
-         junit 'target/surefire-reports/TEST-*.xml'
-         archive 'target/*.jar'
-      }
+      junit 'target/surefire-reports/TEST-*.xml'
+      archive 'target/*.jar'
    }
    /*stage('SonarQube analysis') {
-       steps {
-          // ** NOTE: This 'SonarQube Scanner 3' tool must be configured in the global configuration.
-          def scannerHome = tool 'SonarQube Scanner 3';
-          withSonarQubeEnv() {
-             sh "${scannerHome}/bin/sonar-scanner"
-          }
+       // ** NOTE: This 'SonarQube Scanner 3' tool must be configured in the global configuration.
+       def scannerHome = tool 'SonarQube Scanner 3';
+       withSonarQubeEnv() {
+          sh "${scannerHome}/bin/sonar-scanner"
        }
    } */
 }
