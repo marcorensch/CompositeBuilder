@@ -1,4 +1,5 @@
 // scripted pipeline syntax
+
 // noinspection GroovyAssignabilityCheck
 node {
    def mvnHome
