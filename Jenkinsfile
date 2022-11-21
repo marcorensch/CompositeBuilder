@@ -1,5 +1,5 @@
-// noinspection GroovyAssignabilityCheck
 // scripted pipeline syntax
+// noinspection GroovyAssignabilityCheck
 node {
    def mvnHome
    stage('Preparation') {
