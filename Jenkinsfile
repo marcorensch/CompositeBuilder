@@ -1,4 +1,4 @@
-/// declarative syntax
+// declarative syntax
 // noinspection GroovyAssignabilityCheck
 pipeline {
    agent any
@@ -12,9 +12,16 @@ pipeline {
             sh 'mvn -Dmaven.test.failure.ignore clean org.jacoco:jacoco-maven-plugin:prepare-agent package'
          }
          post {
+            // only run if previous steps in current stage successful
             success {
                junit 'target/surefire-reports/**/*.xml'
+               archive 'target/*.jar'
             }
+         }
+      }
+      stage('SonarQube analysis') {
+         withSonarQubeEnv() {
+            sh "mvn clean package -Dmaven.test.skip=true sonar:sonar"
          }
       }
    }
