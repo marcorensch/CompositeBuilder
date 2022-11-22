@@ -20,8 +20,10 @@ pipeline {
          }
       }
       stage('SonarQube analysis') {
-         withSonarQubeEnv() {
-            sh "mvn clean package -Dmaven.test.skip=true sonar:sonar"
+         steps {
+            withSonarQubeEnv() {
+               sh "mvn clean package -Dmaven.test.skip=true sonar:sonar"
+            }
          }
       }
    }
