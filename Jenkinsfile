@@ -19,13 +19,13 @@ pipeline {
             }
          }
       }
-      stage('Quality analysis') {
-         steps {
-            // ** NOTE: This 'SonarScanner 4' SonarScanner tool must be configured in the global configuration.
-            withSonarQubeEnv('SonarScanner 4') {
-               sh "mvn -Dmaven.test.skip=true clean package sonar:sonar"
-            }
-         }
-      }
+//      stage('Quality analysis') {
+//         steps {
+//            // ** NOTE: This 'SonarScanner 4' SonarScanner tool must be configured in the global configuration.
+//            withSonarQubeEnv('SonarScanner 4') {
+//               sh "mvn -Dmaven.test.skip=true clean package sonar:sonar"
+//            }
+//         }
+//      }
    }
 }
