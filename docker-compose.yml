@@ -2,13 +2,13 @@ version: "3"
 
 services:
   jenkins:
-    image: jenkinsci/blueocean
+    image: jenkins/jenkins:latest-jdk11
     ports:
-      - 8888:8080
+      - "8888:8080"
     networks:
       - sonarnet
     volumes:
-      - ./jenkins-data:/var/jenkins_home
+      - jenkins_data:/var/jenkins_home
 
   sonarqube:
     image: sonarqube:7.9.1-community
@@ -23,6 +23,8 @@ services:
       - SONAR_JDBC_USERNAME=sonar
       - SONAR_JDBC_PASSWORD=sonar
     volumes:
+      # docker volume definitions (named volume with local driver)
+      # managed by docker, reassigned on container restart without data loss
       - sonarqube_conf:/opt/sonarqube/conf
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_logs:/opt/sonarqube/logs
@@ -44,7 +46,7 @@ networks:
     driver: bridge
 
 volumes:
-  jenkins-data:
+  jenkins_data:
   sonarqube_conf:
   sonarqube_data:
   sonarqube_logs:
