@@ -9,7 +9,7 @@ pipeline {
    stages {
       stage ('Build') {
          steps {
-            sh 'mvn -Dmaven.test.failure.ignore clean org.jacoco:jacoco-maven-plugin:prepare-agent package'
+            sh 'mvn -Dmaven.test.failure.ignore clean package'
          }
          post {
             // only run if previous steps in current stage successful
@@ -21,6 +21,7 @@ pipeline {
       }
       stage('Quality analysis') {
          steps {
+            // Docs: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/
             // ** NOTE: This 'sonar server' SonarQube server must be configured in the system configuration.
             withSonarQubeEnv('sonar server') {
                sh "mvn -Dmaven.test.skip=true clean package sonar:sonar"
