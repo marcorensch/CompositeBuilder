@@ -24,7 +24,7 @@ pipeline {
             // Docs: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/
             // ** NOTE: This 'sonar server' SonarQube server must be configured in the system configuration.
             withSonarQubeEnv('sonar server') {
-               sh "mvn -Dmaven.test.skip=true clean package sonar:sonar"
+               sh "mvn -Dmaven.test.skip=true package sonar:sonar"
             }
          }
       }
