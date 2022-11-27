@@ -14,6 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <junit.version>4.13.1</junit.version>
+
+        <sonar.projectKey>=composite-builder</sonar.projectKey>
+        <sonar.projectName>=Composite Builder</sonar.projectName>
+        <sonar.projectVersion>=1.0</sonar.projectVersion>
+        <sonar.sources>=src</sonar.sources>
+        <sonar.java.binaries>=target/classes,target/test-classes</sonar.java.binaries>
+        <sonar.junit.reportsPaths>=target/surefire-reports</sonar.junit.reportsPaths>
+        <sonar.jacoco.reportPaths>=target/jacoco.exec</sonar.jacoco.reportPaths>
     </properties>
 
     <build>
