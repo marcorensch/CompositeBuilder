@@ -21,8 +21,8 @@ pipeline {
       }
       stage('Quality analysis') {
          steps {
-            // ** NOTE: This 'SonarScanner4' SonarScanner tool must be configured in the global configuration.
-            withSonarQubeEnv('sonar_scanner') {
+            // ** NOTE: This 'sonar server' SonarQube server must be configured in the system configuration.
+            withSonarQubeEnv('sonar server') {
                sh "mvn -Dmaven.test.skip=true clean package sonar:sonar"
             }
          }
