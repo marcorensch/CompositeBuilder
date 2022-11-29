@@ -1,5 +1,8 @@
 version: "3"
-
+# clear all data, volumes, containers:
+#  docker-compose stop
+#  docker-compose rm
+#  docker volume rm compositebuilder_postgresql compositebuilder_postgresql_data compositebuilder_sonarqube_data compositebuilder_sonarqube_extensions compositebuilder_sonarqube_logs compositebuilder_jenkins_data
 services:
   jenkins:
     image: jenkins/jenkins:latest-jdk11
@@ -11,7 +14,7 @@ services:
       - jenkins_data:/var/jenkins_home
 
   sonarqube:
-    image: sonarqube:7.9.1-community
+    image: sonarqube:8.9-community
     depends_on:
       - db
     ports:
