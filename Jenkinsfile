@@ -19,8 +19,5 @@ pipeline {
             }
          }
       }
-      stage('Quality analysis') {
-         
-      }
    }
 }
