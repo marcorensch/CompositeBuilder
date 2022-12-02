@@ -14,7 +14,7 @@ public class HtmlNodeWriterTest {{
 
   describe("Composition", () -> {
     it("should be possible to create one level nested html", () -> {
-      HtmlNode root = HtmlNode.create("div");
+      HtmlNode root = HtmlNode.create("html");
 
       root.addChild(HtmlNodeFactory.createA("about:blank"));
       String html = HtmlNodeWriter.create().write(root);
