@@ -21,6 +21,8 @@ public class AttributedCompositeNodeTest {{
       AttributedCompositeNode node = AttributedCompositeNode.create();
       node.setAttribute("key", "value");
       node.setAttribute("key1", "value1");
+            node.setAttribute("key2", "value2");
+
       expect(node.attributes.size()).toEqual(2);
     });
 
