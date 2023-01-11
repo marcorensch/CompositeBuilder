@@ -19,7 +19,7 @@ pipeline {
             }
          }
       }
-      /*
+
       stage('Quality analysis') {
          steps {
             // Docs: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/
@@ -29,6 +29,6 @@ pipeline {
             }
          }
       }
-      */
+
    }
 }
